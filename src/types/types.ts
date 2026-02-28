@@ -14,4 +14,11 @@ export type RegisterCredits={
     name:string;
     email:string;
     password:string;
+    Gender:string;
+    City:string;
+    Country:string;
+        Description:string;
+        DateOfBirth:Date;
+
+
 }

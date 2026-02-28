@@ -1,57 +1,151 @@
-<!--
-  This example requires updating your template:
+<div class="min-h-screen bg-cover bg-center flex items-center justify-center"
+     style="background-image: url(https://images.pexels.com/photos/19835669/pexels-photo-19835669.jpeg);">
 
-  ```
-  <html class="h-full bg-gray-900">
-  <body class="h-full">
-  ```
--->
-<div class=" card shadow-lg bg-gradient-to-r from-sky-900 via-slate-800 to-gray-900 w-1/2 h-1/2 flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mx-auto mt-36">
+<div 
+class=" card shadow-lg bg-blend-lighten w-1/2 h-1/2 flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mx-auto mt-36 backgr"
+style="background-color: white;"
+>
   <div class="sm:mx-auto sm:w-full sm:max-w-sm align-middle">
      
-    <h2 class="  text-center text-2xl/9 font-bold tracking-tight text-white">Register Now</h2>
+    <h2 class="  text-center text-2xl/9 font-bold tracking-tight ">Register Now</h2>
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form #RegistrationForm (ngSubmit)="Register()" class="space-y-6">
+    <form [formGroup]="RegisterForm" (ngSubmit)="Register()" class="space-y-6">
         <div>
-        <label for="name" class="block text-sm/6 font-medium text-gray-100">Username</label>
-        <div class="mt-2">
-          <input [(ngModel)]="RegisterCredits.name" name="name" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
-        </div>
+        <label class="floating-label">
+          
+        <input
+        [class.input-error]="RegisterForm.controls['Email'].invalid && RegisterForm.controls['Email'].touched"
+            formControlName="Email"
+            placeholder="Email"
+          class="input w-full">
+          @if(RegisterForm.controls['Email'].invalid && RegisterForm.controls['Email'].touched)
+            {
+              <div class="validation-hint text-error"> this field should be an valid email address</div>
+            } 
+            </label>
+         
       </div>
-      <div>
-        <label for="email" class="block text-sm/6 font-medium text-gray-100">Email address</label>
-        <div class="mt-2">
-          <input [(ngModel)]="RegisterCredits.email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
-        </div>
-      </div>
-
-      <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
+       <label class="floating-label">
            
-        </div>
-        <div class="mt-2">
-          <input  [(ngModel)]="RegisterCredits.password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
-        </div>
-      </div>
+        <input
+        [class.input-error]="RegisterForm.controls['displayname'].invalid && RegisterForm.controls['displayname'].touched"
+            formControlName="displayname"
+            placeholder="displayname"
+            class="input w-full"
+             >
+              @if(RegisterForm.controls['displayname'].invalid && RegisterForm.controls['displayname'].touched)
+            {
+              <div class="validation-hint text-error"> Displayname is required </div>
+            } 
+           </label>
 
+       <label class="floating-label">
+           
+        <input
+        [class.input-error]="RegisterForm.controls['password'].invalid && RegisterForm.controls['password'].touched"
+        type="password"
+            formControlName="password"
+            placeholder="Password"
+    class="input w-full"> 
+   @if(RegisterForm.controls['password'].invalid && RegisterForm.controls['password'].touched)
+            {
+              <div class="validation-hint text-error">password Should be more than 6 char and less than 16</div>
+            } 
+            </label>
+            <label class="floating-label">
+           
+        <input
+        [class.input-error]="RegisterForm.controls['DateOfbirth'].invalid && RegisterForm.controls['DateOfbirth'].touched"
+        type="date"
+            formControlName="DateOfbirth"
+            placeholder="DateOfbirth"
+    class="input w-full"> 
+   @if(RegisterForm.controls['DateOfbirth'].invalid && RegisterForm.controls['DateOfbirth'].touched)
+            {
+              <div class="validation-hint text-error">password Should be more than 6 char and less than 16</div>
+            } 
+            </label>
+           <div class="form-group">
+     <div class="w-64">
+     <label for="gender"
+         class="block text-sm font-medium text-gray-700 mb-2">
+    Gender
+     </label>
+     <select id="gender"
+          formControlName="Gender"
+          class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+       <option value="Male">Male</option>
+      <option value="Female">Female</option>
+   </select>
+   </div>
+</div>
+<label class="floating-label">
+           
+        <input
+        [class.input-error]="RegisterForm.controls['City'].invalid && RegisterForm.controls['City'].touched"
+        type="City"
+            formControlName="City"
+            placeholder="City"
+class="input w-full"> 
+   @if(RegisterForm.controls['City'].invalid && RegisterForm.controls['City'].touched)
+            {
+              <div class="validation-hint text-error">City Required</div>
+            } 
+            </label>
+            <label class="floating-label">
+           
+        <input
+        [class.input-error]="RegisterForm.controls['Country'].invalid && RegisterForm.controls['Country'].touched"
+        type="Country"
+            formControlName="Country"
+            placeholder="Country"
+class="input w-full"> 
+   @if(RegisterForm.controls['Country'].invalid && RegisterForm.controls['Country'].touched)
+            {
+              <div class="validation-hint text-error">Country Required</div>
+            } 
+            </label>
+            <label class="floating-label">
+           
+        <input
+        [class.input-error]="RegisterForm.controls['Description'].invalid && RegisterForm.controls['Description'].touched"
+        type="Description"
+            formControlName="Description"
+            placeholder="Description"
+class="input w-full h-30"> 
+   @if(RegisterForm.controls['Description'].invalid && RegisterForm.controls['Description'].touched)
+            {
+              <div class="validation-hint text-error">Description at least 4 words</div>
+            } 
+            </label>
+
+
+     
       <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Submit</button>
+        <button 
+        [disabled]="!RegisterForm.valid"
+        type="submit"
+         class="btn bg-amber-500" 
+         >Submit</button>
       </div>
     </form>
 
      
 </div>
- @if (registedValidation.ValidationError().length>0) {
-  <div class="bg-white p-3 rounded shadow">
-    @for (msg of registedValidation.ValidationError(); track $index) {
-      <div class="bg-red-500 text-white p-2 my-1 rounded">
-         <ul> {{msg}}</ul>
-      </div>
-    }
+  </div>
+</div>
+@if(ValidationError().length>0)
+{
+  <div class="mt-5 flex bg-gray-200 rounded-2xl w-1/2 p-3 mx-auto">
+    <ul class="flex flex-col text-error space-y-1"> 
+@for(error of ValidationError(); track $index)
+{
+<li> {{error}}</li>
+}
+    </ul>
+
   </div>
 }
-
 

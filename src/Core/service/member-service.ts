@@ -36,6 +36,21 @@ UpdateMember(member:EditableMember)
 
 
 }
-   
+  UploadPhoto(file:File)
+  {
+    
+    const formData=new FormData()
+    formData.append('file',file);
+   return this.http.post<Photo>(this.baseUrl+"Member/UploadPhoto",formData);
+  
+  }
+  setMainPhoto(photo:Photo) 
+  {
+    return this.http.put(this.baseUrl+"Member/set-main-photo/"+photo.photoId,{});
+  }
+  DeletePhoto(photoId:number)
+  {
+   return this.http.delete(this.baseUrl+"Member/DeletePhoto/ "+ photoId);
+  }
   
 }

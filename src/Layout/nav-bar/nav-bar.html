@@ -49,7 +49,7 @@
       {
 <div class="dropdown dropdown-end ">
   <div tabindex="0" role="button" class="flex items-center text-3xl text-yellow-300 cursor-pointer gap-3 "> 
-<img [src]="accountService.CurrentUser()?.imageURl" alt="/user.webp" class="w-8 h-8 rounded-full">
+<img [src]="accountService.CurrentUser()?.imageURl||'/user.webp' " class="w-8 h-8 rounded-full">
   <span class="text-3xl"> {{member.name}}</span>
   </div>
   <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">

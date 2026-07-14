@@ -3,7 +3,9 @@
     email: string;
      name: string;
     imageURl?: string
-    token: string;
+    accessToken: string;
+    refreshtoken: string;
+
 
 }
 export type LoginCredits={
@@ -22,3 +24,4 @@ export type RegisterCredits={
 
 
 }
+

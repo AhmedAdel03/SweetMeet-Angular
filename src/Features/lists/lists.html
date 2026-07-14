@@ -1,1 +1,26 @@
-<p>lists works!</p>
+<div class="flex justify-center my-6">
+  <div class="tabs tabs-box bg-base-200 p-1 rounded-xl shadow-md gap-1">
+
+    @for (tab of tabs; track $index) {
+      <button
+        role="tab"
+        class="tab px-6 py-2 rounded-lg font-medium transition-all duration-200"
+        [class.tab-active]="predicate === tab.value"
+        (click)="SetPredicate(tab.value)"
+      >
+        {{ tab.label }}
+      </button>
+    }
+
+  </div>
+</div>
+<div class="grid grid-cols-5 gap-6 gap-y-10 mt-10">
+    @if (Members().length>0) 
+    {
+ @for (member of Members(); track member.id) {
+  <app-member-card [member]="member" />
+  }
+    }
+ 
+
+</div>

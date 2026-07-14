@@ -1,0 +1,63 @@
+<dialog #filterModal class="modal">
+  <div class="modal-box">
+<div class="modal-box max-w-lg">
+  <h3 class="text-lg font-bold"> select Filters</h3>
+  <div class="flex justify-between w-full items-center mt-6">
+<div class="flex flex-col w-full gap-6"> 
+<label class="flex justify-between items-center"> 
+  <span class="front-semibold">Select Ginder: </span>
+  <form class="filter">
+<input class="btn btn-square " type="reset" value="x">
+<input class="btn " type="radio" value="x"  [(ngModel)]="memberParams.Gender" name="Gender" value="male" aria-label="Male" >
+<input class="btn " type="radio" value="x"  [(ngModel)]="memberParams.Gender" name="Gender" value="female" aria-label="Female">
+  </form>
+</label>
+<label class="flex justify-between items-center">
+  <span class="font-semibold"> 
+select age
+  </span>
+  <div class="flex gap-3">
+    <input class="input w-20"
+    type="number"
+    [min]="18"
+    [(ngModel)]="memberParams.minAge"
+    name="minAge"
+    (change)="onMinAgeChange()"
+    >   
+    <input class="input w-20"
+    type="number"
+    [min]="memberParams.minAge|| 18"
+    [(ngModel)]="memberParams.maxAge"
+    name="minAge"
+    (change)="onMaxAgeChange()"
+    >   
+
+  </div>
+</label>
+<label class="flex justify-between items-center">
+  <span class="font-semibold ">Order By: </span> 
+  <select name="OrderBy" class="select" [(ngModel)]="memberParams.OrderBy">
+<option disabled selected >OrderBy</option>
+  <option value="Created"> Newest members</option>
+    <option value="lastActive">Last Active members</option>
+
+  </select>
+</label>
+ 
+</div>
+  </div>
+    <div class="modal-action">
+       
+        <button class="btn btn-primary"(click)="sumbit()">submit</button>
+      <form method="dialog" class="modal-backdrop">
+    <button class="btn btn-primary" (click)="close()"> close</button>
+
+  </form>
+    </div>
+</div>
+
+  
+   
+  </div>
+  
+</dialog>

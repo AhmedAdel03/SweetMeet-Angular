@@ -35,7 +35,7 @@ export class NavBar implements OnInit {
    return this.accountService.Login(this.Credits).subscribe({
     next:result=>{
         this.router.navigateByUrl('/members')
-        this.ToasterService.success("Login Success","hi",{})
+        this.ToasterService.success("Login Success")
       
       },
     error:error=> console.log(error)

@@ -1,0 +1,93 @@
+<div class="flex flex-col w-full h-full">
+    <div class="flex flex-col flex-grow overflow-auto">
+        @if(messages().length>0)
+        {
+       @for (message  of messages(); track message.id) {
+<div class="chat"
+[class.chat-start]="!message.CurrentUserSender"
+[class.chat-end]="message.CurrentUserSender"
+>
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <img
+        alt="Member Img"
+        src="{{message.senderImgUrl}}"
+      />
+    </div>
+  </div>
+  <div class="chat-header">
+   {{message.senderDisplayName}}
+    <time class="text-xs opacity-50">{{message.messageSent | date:'short'}}</time>
+  </div>
+  <div class="chat-bubble">{{message.content}}</div>
+  @if(message.CurrentUserSender&&message.dateRead)
+  {
+  <div class="chat-footer opacity-50">Seen {{message.dateRead | date:'short'}} </div>
+  }
+  @else if (message.CurrentUserSender&&!message.dateRead) {
+      <div class="chat-footer opacity-50">Not Read</div>
+
+  }
+  @else { 
+          <div class="chat-footer opacity-50">Deliverd</div>
+
+  }
+</div>
+        }
+        }
+
+        @else {
+<div class="flex items-center justify-center min-h-[70vh] px-6">
+  <div class="max-w-md text-center">
+
+    <!-- Icon -->
+    <div class="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 24 24"
+           stroke-width="1.8"
+           stroke="currentColor"
+           class="w-10 h-10 text-primary">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8.625 9.75a3.375 3.375 0 116.75 0c0 1.5-.75 2.25-1.875 3l-.375.25v.75m0 3h.008M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-2xl font-bold mb-2">
+      No Conversation Yet
+    </h2>
+
+    <!-- Description -->
+    <p class="text-base-content/70 mb-6">
+      You haven't exchanged any messages with this user yet.
+      Say hello and start the conversation!
+    </p>
+
+  </div>
+</div>
+
+        }
+ <div #messageEndRef>
+
+
+ </div>
+
+    </div> 
+    <div class="flex join w-full">
+<input 
+[(ngModel)]="MessageContent"
+class="input w-full "
+placeholder="Enter Message"
+(keydown.enter)="SendMessage()"
+>
+<button
+class="btn btn-primary join-item"
+(click)="SendMessage()" type="submit"
+> Submit</button>
+    </div>
+
+</div>
+
+
+ 
